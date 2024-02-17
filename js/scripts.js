@@ -74,3 +74,23 @@ function fadeIn(el, display) {
         }
     })();
 };
+$(document).ready(function () {
+    AOS.init({
+        offset: 100,
+        duration: 800,
+        easing: 'ease-in-out-back',
+        once: true 
+    });
+
+    $(window).scroll(function () {
+        $(".scroll-section").each(function () {
+            const position = $(this).offset().top;
+            const windowHeight = $(window).height();
+            const scroll = $(window).scrollTop();
+
+            if (scroll > position - windowHeight + 100) {
+                $(this).addClass("active-near");
+            }
+        });
+    });
+});
